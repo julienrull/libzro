@@ -7,8 +7,9 @@ static char * test_string_init() {
     setlocale(LC_CTYPE, "");
     Allocator a = std_alloc_init();
     String test = string_new(L"L'évènement de la vie", &a);
-    string_println(test);
-    //String str = string_new("Salut les gens ! C'est un évènement.");
+    String test2 = string_cpy(test, &a);
+    String test3 = string_concat((String[]){test, test2}, 2, &a);
+    string_println(test3);
     //mu_assert("error, header.capacity != 16", array_header(arr)->capacity == 16);
     return 0;
 }
