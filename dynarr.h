@@ -16,7 +16,7 @@
             (a) = array_ensure_capacity(a, 1, sizeof(v)), \
             (a)[array_header(a)->lenght] = (v), \
             &(a)[array_header(a)->lenght++])
-        #define array_remove(a, i) do { \
+        #define array_unordered_remove(a, i) do { \
             ArrayHeader *h = array_header(a); \
             if (i == h->lenght - 1) { \
                 h->lenght -= 1; \
@@ -25,6 +25,16 @@
                 void *last = &a[h->lenght - 1]; \
                 h->lenght -= 1; \
                 memcpy(ptr, last, sizeof(*a)); \
+            } \
+        } while (0);
+        #define array_ordered_remove(a, i) do { \
+            ArrayHeader *h = array_header(a); \
+            if (i == h->lenght - 1) { \
+                h->lenght -= 1; \
+            } else if (h->lenght > 1) { \
+                void *ptr = &a[i]; \
+                memcpy(ptr, ptr + 1,  (h->lenght - i + 1) * sizeof(*a)); \
+                h->lenght -= 1; \
             } \
         } while (0);
         #define array_pop_back(a) (array_header(a)->lenght -= 1)
@@ -45,7 +55,7 @@
             (a) = array_ensure_capacity(a, 1, sizeof(v)), \
             (a)[array_header(a)->lenght] = (v), \
             &(a)[array_header(a)->lenght++])
-        #define array_remove(a, i) do { \
+        #define array_unordered_remove(a, i) do { \
             ArrayHeader *h = array_header(a); \
             if (i == h->lenght - 1) { \
                 h->lenght -= 1; \
@@ -54,6 +64,16 @@
                 void *last = &a[h->lenght - 1]; \
                 h->lenght -= 1; \
                 memcpy(ptr, last, sizeof(*a)); \
+            } \
+        } while (0);
+        #define array_ordered_remove(a, i) do { \
+            ArrayHeader *h = array_header(a); \
+            if (i == h->lenght - 1) { \
+                h->lenght -= 1; \
+            } else if (h->lenght > 1) { \
+                void *ptr = &a[i]; \
+                memmove(ptr, ptr + sizeof(*a),  (h->lenght - (i + 1)) * sizeof(*a)); \
+                h->lenght -= 1; \
             } \
         } while (0);
         

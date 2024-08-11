@@ -38,11 +38,11 @@ static char * test_dynarr_indexes() {
     return 0;
 }
 
-static char * test_dynarr_remove() {
+static char * test_dynarr_unordered_remove() {
     Allocator a = std_alloc_init();
     int* arr = array(int, &a);
     for(int i = 0; i < 20; i++) array_append(arr, i);
-    array_remove(arr, 10);
+    array_unordered_remove(arr, 10);
     mu_assert("error, header.lenght != 19", array_header(arr)->lenght == 19);
     for(int i = 0; i < array_header(arr)->lenght; i++) {
         if(i == 10){
@@ -51,16 +51,31 @@ static char * test_dynarr_remove() {
             mu_assert("error, arr[i] != i", arr[i] == i);
         } 
     }
-    
     return 0;
 }
 
+static char * test_dynarr_ordered_remove() {
+    Allocator a = std_alloc_init();
+    int* arr = array(int, &a);
+    for(int i = 0; i < 20; i++) array_append(arr, i);
+    array_ordered_remove(arr, 10);
+    mu_assert("error, header.lenght != 19", array_header(arr)->lenght == 19);
+    for(int i = 0; i < array_header(arr)->lenght; i++) {
+        if(i >= 10){
+            mu_assert("error, arr[i] != i + 1", arr[i] == i + 1);
+        }else {
+            mu_assert("error, arr[i] != i", arr[i] == i);
+        } 
+    }
+    return 0;
+}
 static char * all_tests() {
     mu_run_test(test_dynarr_init);
     mu_run_test(test_dynarr_append);
     mu_run_test(test_dynarr_append_resize);
     mu_run_test(test_dynarr_indexes);
-    mu_run_test(test_dynarr_remove);
+    mu_run_test(test_dynarr_unordered_remove);
+    mu_run_test(test_dynarr_ordered_remove);
     return 0;
 }
 int main(int argc, char **argv) {
