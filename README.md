@@ -1,18 +1,28 @@
-# LIB ZrØ
+# ZrØ - Core Library
 
-Boilerplate crossplateform library for sanity and peaceful mind C programming ✌️
-
----
+**libzro** is a crossplateform boilerplate library for sanity and peaceful mind C programming ✌️
 
 > [!warning]
-> libzro is still in early stage development and, so, comes without any guarantee to work properly for your needs. Keep your expectations low. 
+> It is still in early stage development, so it comes without any guarantee to work properly in a production context. Thank you for your understanding. 
 
-libzro is fundations of a bigger toolchains project called "ZrØ". It's a personal project primarely for my hobby and professional usecases but also for educational purposes, so there is a lot of room for improvement.
+**libzro** is the core fundation of a bigger toolchains project called "ZrØ". It's apersonal project primarely for my hobby and professional usecases but also for educational purposes. You can find the sources **libzro** is inspired of below. 
 
 ## What libzro provides
 
-- **zro_alloc.h**: contextual generic allocator mechanisme.
-- **zro_arena.h**: arena allocator, an alternative to malloc for safer and easier memory lifetimes managment.
-- **zro_dynarr.h**: dynamic array (aka Vector or ArrayList).
-- **zro_string.h**: provide an API for better and easier unicode/UTF-8 compatible strings manimulation.
-- **zro_type.h**: crossplatform and clearer type definitions.
+### Legend
+
+🔴 - Not implemented or partialy implemented
+
+🟠 - Implemented but not tested
+
+🟢 - Implemented and tested
+
+### Features
+
+- **zro_alloc.h**: contextual generic allocator mechanisme. 🟢
+- **zro_arena.h**: arena allocator, an alternative to malloc for safer and easier memory lifetimes managment. 🟢
+- **zro_dynarr.h**: dynamic array data structure (aka Vector or ArrayList). 🟢
+- **zro_string.h**: new string API for easier unicode/UTF-8 compatible strings manimulation. 🟠
+- **zro_buff.h**: Stream bytes buffer data structures for easier data flow
+  managment. 🔴
+- **zro_type.h**: collection of useful type for libzro to work properly. 🔴
