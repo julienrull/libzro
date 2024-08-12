@@ -1,6 +1,6 @@
 #define __ARENA_IMPL__
-#include "../tests.h"
-#include "../arena.h"
+#include "../zro_test.h"
+#include "../zro_arena.h"
 
 int tests_run = 0;
 

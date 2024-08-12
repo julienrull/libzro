@@ -1,7 +1,7 @@
 #define __DYNARR_IMPL__
 #define __STRING_IMPL__
-#include "../tests.h"
-#include "../string.h"
+#include "../zro_test.h"
+#include "../zro_string.h"
 int tests_run = 0;
 static char * test_string_init() {
     setlocale(LC_CTYPE, "");

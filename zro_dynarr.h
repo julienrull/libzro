@@ -1,12 +1,12 @@
-#ifndef __DYNARR__
-    #define __DYNARR__
+#ifndef __ZRO_DYNARR__
+    #define __ZRO_DYNARR__
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
-    #define __ALLOCATOR_IMPL__
-    #include "allocator.h"
+    #define __ZRO_ALLOC_IMPL__
+    #include "zro_alloc.h"
     #define ARRAY_INITIAL_CAPACITY 16
-    #ifndef __DYNARR_IMPL__
+    #ifndef __ZRO_DYNARR_IMPL__
         #define array(T, a) array_init(sizeof(T), ARRAY_INITIAL_CAPACITY, a)
         typedef struct ArrayHeader;
         #define array_header(a) ((ArrayHeader *)(a) - 1)

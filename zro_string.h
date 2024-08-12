@@ -1,11 +1,11 @@
-#ifndef __STRING__
-    #define __STRING__ 
+#ifndef __ZRO_STRING__
+    #define __ZRO_STRING__ 
     #include "type.h"
-    #include "dynarr.h"
-    #define STRING_FIRST 1
-    #define STRING_LAST  -1
-    #define STRING_ALL   0
-    #ifndef __STRING_IMPL__
+    #include "zro_dynarr.h"
+    #define ZRO_STRING_FIRST 1
+    #define ZRO_STRING_LAST  -1
+    #define ZRO_STRING_ALL   0
+    #ifndef __ZRO_STRING_IMPL__
        typedef struct String;   
        String string_new(Rune *str, Allocator *a);
        void string_printf(String str, Allocator *a);

@@ -1,6 +1,6 @@
 #define __DYNARR_IMPL__
-#include "../tests.h"
-#include "../dynarr.h"
+#include "../zro_test.h"
+#include "../zro_dynarr.h"
 int tests_run = 0;
 static char * test_dynarr_init() {
     Allocator a = std_alloc_init();

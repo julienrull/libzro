@@ -1,17 +1,16 @@
-
-#ifndef __ARENA__
-    #define __ARENA__
+#ifndef __ZRO_ARENA__
+    #define __ZRO_ARENA__
+    #define __ZRO_ALLOC_IMPL__
     #include<stdio.h>
     #include<stdlib.h>
-    #define __ALLOCATOR_IMPL__
-    #include "allocator.h"
+    #include "zro_alloc.h"
     // *** ALLOCATORS ***  
     #ifndef __ALIGNMENT__
         #define __DEFAULT_ALIGNMENT__ (2 * sizeof(void *))
     #endif
     #define arena_alloc_init(a) (Allocator){arena_alloc, arena_free, a}
     #define is_power_of_two(x) ((x != 0) && ((x & (x - 1)) == 0))
-    #ifndef __ARENA_IMPL__
+    #ifndef __ZRO_ARENA_IMPL__
             // *** ALLOCATORS ***  
             typedef struct Arena; 
             uintptr_t align_forward(uintptr_t ptr, size_t alignment)

@@ -1,5 +1,5 @@
-#ifndef __TYPE__
-    #define __TYPE__
+#ifndef __ZRO_TYPE__
+    #define __ZRO_TYPE__
     #include <stdio.h> 
     #include <wchar.h>
     #include <locale.h>
