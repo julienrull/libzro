@@ -1,4 +1,4 @@
-#define __ARENA_IMPL__
+#define __ZRO_ARENA_IMPL__
 #include "../zro_test.h"
 #include "../zro_arena.h"
 
@@ -28,7 +28,7 @@ static char * test_arena_alloc() {
     mu_assert("error, *val != 555", *val == 555);
     int *val2 = allocator.alloc(sizeof(int), allocator.context);
     *val2 = 444;
-    mu_assert("error, val2 != (int*)(arena.base + 16)", val2 == (int*)(arena.base + 16));
+    mu_assert("error, val2 != (int*)(arena.base + 16)", val2 == (int*)((char*)(arena.base) + 16));
     printf("%lu\n", arena.offset);
     mu_assert("error, arena.offset != 16 + sizeof(int)", arena.offset == 16 + sizeof(int));
     mu_assert("error, arena.committed != sizeof(int) * 2", arena.committed == sizeof(int) * 2);

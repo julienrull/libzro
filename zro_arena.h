@@ -60,7 +60,7 @@
                 }
             
                 a->committed += size;
-                void *ptr = (uint8_t *)a->base + offset;
+                void *ptr = (char*)a->base + offset;
                 a->offset = offset + size;
             
                 return ptr;

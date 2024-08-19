@@ -1,6 +1,6 @@
 #ifndef __ZRO_STRING__
     #define __ZRO_STRING__ 
-    #include "type.h"
+    #include "zro_type.h"
     #include "zro_dynarr.h"
     #define ZRO_STRING_FIRST 1
     #define ZRO_STRING_LAST  -1
@@ -14,19 +14,19 @@
        //String string_replace(const char *from, const char *to, int flag);
        //size_t string_index_of(const char *str, int flag);
     #else
-       typedef struct {
-           Rune     *str; 
-       } String;   
+        typedef struct {
+            Rune     *str; 
+        } String;   
         String string_new(Rune *str, Allocator *a) {
-        String res = {0};  
-        res.str = array(Rune, a);
-        Rune *index = str;
-        while (*index != L'\0') {
-            array_append(res.str, *index); 
-            index++;
+            String res = {0};  
+            res.str = array(Rune, a);
+            Rune *index = str;
+            while (*index != L'\0') {
+                array_append(res.str, *index); 
+                index++;
+            }
+            return res;
         }
-        return res;
-       }
        String string_cpy(String src, Allocator *a){
             String res = string_new(L"", a);  
             int i = 0; 
@@ -48,11 +48,14 @@
        }
        void string_println(String str){
             int i = 0; 
+            DWORD written = 0;
             while (i < array_lenght(str.str)){
-                wprintf(L"%lc", str.str[i]);
+                //wprintf(L"%lc", str.str[i]);
+                WriteConsoleW(GetStdHandle(STD_OUTPUT_HANDLE), &str.str[i], 1, &written, NULL);
                 i++;
             }
-            wprintf(L"\n", str.str[i]);
+            //wprintf(L"\n", str.str[i]);
+            WriteConsoleW(GetStdHandle(STD_OUTPUT_HANDLE), L"\n", 1, &written, NULL);
        }
     #endif
 #endif

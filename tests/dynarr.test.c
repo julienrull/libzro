@@ -1,4 +1,4 @@
-#define __DYNARR_IMPL__
+#define __ZRO_DYNARR_IMPL__
 #include "../zro_test.h"
 #include "../zro_dynarr.h"
 int tests_run = 0;

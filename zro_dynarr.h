@@ -72,7 +72,7 @@
                 h->lenght -= 1; \
             } else if (h->lenght > 1) { \
                 void *ptr = &a[i]; \
-                memmove(ptr, ptr + sizeof(*a),  (h->lenght - (i + 1)) * sizeof(*a)); \
+                memmove(ptr, (char*)(ptr) + sizeof(*a),  (h->lenght - (i + 1)) * sizeof(*a)); \
                 h->lenght -= 1; \
             } \
         } while (0);
