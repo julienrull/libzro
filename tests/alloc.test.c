@@ -1,25 +1,25 @@
-#define __ZRO_ARENA_IMPL__
+#include <stdio.h>
 #include "../zro_test.h"
-#include "../zro_arena.h"
+#include "../zro_alloc.h"
 
 int tests_run = 0;
 
 static char * test_arena_init() {
     unsigned char *buffer = malloc(1024);
-    Arena arena = arena_init(buffer, 1024);
-    Allocator allocator = arena_alloc_init(&arena);
+    arena_t arena = arena_init(buffer, 1024);
+    alloc_t allocator = arena_alloc(&arena);
     mu_assert("error, &arena != allocator.context", &arena == allocator.context);
-    mu_assert("error, buffer != ((Arena*)(allocator.context))->base", buffer == ((Arena*)(allocator.context))->base);
-    mu_assert("error, ((Arena*)(allocator.context))->size != 1024", ((Arena*)(allocator.context))->size == 1024);
-    mu_assert("error, ((Arena*)(allocator.context))->offset != 0", ((Arena*)(allocator.context))->offset == 0);
-    mu_assert("error, ((Arena*)(allocator.committed))-> != 0", ((Arena*)(allocator.context))->committed == 0);
+    mu_assert("error, buffer != ((arena_t*)(allocator.context))->base", buffer == ((arena_t*)(allocator.context))->base);
+    mu_assert("error, ((arena_t*)(allocator.context))->size != 1024", ((arena_t*)(allocator.context))->size == 1024);
+    mu_assert("error, ((arena_t*)(allocator.context))->offset != 0", ((arena_t*)(allocator.context))->offset == 0);
+    mu_assert("error, ((arena_t*)(allocator.committed))-> != 0", ((arena_t*)(allocator.context))->committed == 0);
     return 0;
 }
 
 static char * test_arena_alloc() {
     unsigned char *buffer = malloc(1024);
-    Arena arena = arena_init(buffer, 1024);
-    Allocator allocator = arena_alloc_init(&arena);
+    arena_t arena = arena_init(buffer, 1024);
+    alloc_t allocator = arena_alloc(&arena);
     int *val = allocator.alloc(sizeof(int), allocator.context);
     *val = 555;
     mu_assert("error, val != (int*)arena.base", val == (int*)arena.base);
@@ -29,7 +29,6 @@ static char * test_arena_alloc() {
     int *val2 = allocator.alloc(sizeof(int), allocator.context);
     *val2 = 444;
     mu_assert("error, val2 != (int*)(arena.base + 16)", val2 == (int*)((char*)(arena.base) + 16));
-    printf("%lu\n", arena.offset);
     mu_assert("error, arena.offset != 16 + sizeof(int)", arena.offset == 16 + sizeof(int));
     mu_assert("error, arena.committed != sizeof(int) * 2", arena.committed == sizeof(int) * 2);
     mu_assert("error, *val2 != 444", *val2 == 444);
@@ -38,11 +37,11 @@ static char * test_arena_alloc() {
 
 static char * test_arena_free_all() {
     unsigned char *buffer = malloc(1024);
-    Arena arena = arena_init(buffer, 1024);
-    Allocator allocator = arena_alloc_init(&arena);
+    arena_t arena = arena_init(buffer, 1024);
+    alloc_t allocator = arena_alloc(&arena);
     int *val = allocator.alloc(sizeof(int), allocator.context);
     int *val2 = allocator.alloc(sizeof(int), allocator.context);
-    arena_free_all(allocator.context);
+    arena_free(allocator.context);
     mu_assert("error, arena.offset != 0", arena.offset == 0);
     mu_assert("error, arena.committed != 0", arena.committed == 0);
     return 0;
