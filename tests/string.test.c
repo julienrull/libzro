@@ -1,9 +1,9 @@
 #define __ZRO_DYNARR_IMPL__
 #define __ZRO_STRING_IMPL__
-#include <Windows.h>
+//#include <Windows.h>
 #include <locale.h>
-#include <io.h>
-#include <fcntl.h>
+//#include <io.h>
+//#include <fcntl.h>
 #include "../zro_test.h"
 #include "../zro_string.h"
 
@@ -14,9 +14,9 @@ static char * test_string_init() {
     //DWORD written = 0;
     //WriteConsoleW(GetStdHandle(STD_OUTPUT_HANDLE), message, strlen(message), &written, NULL);
     
-    //setlocale(LC_ALL, "fr_FR.UTF-8");
-    SetConsoleCP(CP_UTF8);
-    SetConsoleOutputCP(CP_UTF8);
+    setlocale(LC_ALL, "fr_FR.UTF-8");
+    //SetConsoleCP(CP_UTF8);
+    //SetConsoleOutputCP(CP_UTF8);
     Allocator a = std_alloc_init();
     String test = string_new(L"L'évènement de la vie", &a);
     string_println(test);
