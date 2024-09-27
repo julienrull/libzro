@@ -1,5 +1,5 @@
 #include "../zro_test.h"
-#include "../zro_dynarr.h"
+#include "../zro_ds.h"
 
 int tests_run = 0;
 

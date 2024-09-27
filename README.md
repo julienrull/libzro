@@ -1,45 +1,26 @@
-# ZrØ - Core Library
+# libZrØ
 
-**libzro** is a crossplateform boilerplate library for sanity and peaceful mind C programming ✌️
-It's also a hub to centralized low level programming concepts I learn. That's
-mean these are totaly valid in other languages. C is used here for its
-simplicity and ability to stay away from  programmers way to resolve complex
-problems.
+**libzro** is a crossplateform boilerplate header file that implement essential data structures, allocators and more. 
 
 > [!warning]
-> It is still in early stage development, so it comes without any guarantee to work properly in a production context. Plus, header files need to be merge together because they depend on eachother. I will add a dependancies tree later. Thank you for your understanding. 
+> It is still in early stage development, so it comes without any guarantee to work properly in a production context.
 
-**libzro** is the core fundation of a bigger toolchains project called "ZrØ". It's a personal set of libs for my own usecases first but also for educational purposes. You will find the sources **libzro** is inspired of below. 
+**libzro** is a personal set of libs for my own usecases first, but also for educational purposes. You will find the sources **libzro** is inspired of below.
 
 ## Features
 
-🔴 Todo
+- **zro_alc.h**: contextual generic allocator mechanisme with custom allocators. 
+  - std (malloc) allocator wrapper
+  - arena allocator, an alternative to std malloc for safer and easier memory lifetimes managment. 
 
-🟠 Doing
+- **zro_ds.h**: Collection of essential data structure. (These are not implemented by C language out of the box compare to more modern programming languages) 
+  - dynamic array data structure (aka Vector or ArrayList).
+  - hash table (dictionary like data structure) 
 
-🟢 Done
+- **zro_str.h**: new string API for easier unicode/UTF-8 compatible strings manimulation and string building. 
 
----
-
-- 🟢 **zro_alloc.h**: contextual generic allocator mechanisme. 
-
-- 🟢 **zro_arena.h**: arena allocator, an alternative to malloc for safer and easier memory lifetimes managment. 
-
-- 🟢 **zro_dynarr.h**: dynamic array data structure (aka Vector or ArrayList). 
-
-- 🟠 **zro_string.h**: new string API for easier unicode/UTF-8 compatible strings manimulation and string builder. 
-
-- 🟠 **zro_type.h**: collection of useful type for libzro to work properly. 
-
-- 🔴 **zro_stream.h**: Stream bytes buffer data structures for easier data flow 
-  managment. 
+- **zro_t.h**: collection of useful type for libzro to work properly. 
   
-- 🔴 **zro_socket.h**: socket wrapper for TCP, UDP and custom RAW network transport layers. 
-
-- 🔴 **zro_bgap.h**: Gab buffer implementation for user text manipulation, or in
-  other words, the kind of system behind text editors. (rope data structure is a system for more complexe text editor like Microdoft Word).
-
-
 ## Sources
 
 Comming soon...
