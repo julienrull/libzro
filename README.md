@@ -1,22 +1,26 @@
 # libzrØ
 
-**libzro** is a crossplateform boilerplate header file that implement essential data structures, allocators and more. 
+A cross-platform foundation header file, offering a unified set of data structures, memory management solutions, and other core components to accelerate project development and reduce complexity. 
 
 > [!warning]
-> It is still in early stage development, so it comes without any guarantee to work properly in a production context.
+> Please note that libzro is an early-stage project, which means it has not yet undergone extensive testing and therefore should be used with caution in production environments.
 
-**libzro** is a personal set of libs for my own usecases first, but also for educational purposes.
+**Features**
 
-## Features
+### Memory Management
+#### Custom Allocators
 
-- **zro_alc.h**: contextual generic allocator mechanisme with custom allocators. 
-  - std (malloc) allocator wrapper
-  - arena allocator, an alternative to std malloc for safer and easier memory lifetimes managment. 
+* **Standard Allocator**: Compatible with existing code, featuring a wrapper around the standard `malloc`
+function.
+* **Arena Allocator**: A safer and more controlled memory management solution.
 
-- **zro_ds.h**: Collection of essential data structure. (These are not implemented by C language out of the box compare to more modern programming languages) 
-  - dynamic array data structure (aka Vector or ArrayList).
-  - hash table (dictionary like data structure) 
+### Data Structures
+#### Essential Collection
 
-- **zro_str.h**: new string API for easier unicode/UTF-8 compatible strings manimulation and string building. 
+* **Dynamic Array**: A Vector or ArrayList-like data structure for efficient storage and manipulation.
+* **Hash Table**: A Dictionary-like data structure for fast lookups and insertions.
 
-- **zro_t.h**: collection of useful type for libzro to work properly. 
+### String Handling
+#### New String API
+
+* **Unicode/UTF-8 Friendly**: Efficiently manipulate and build Unicode/UTF-8 compatible strings.
