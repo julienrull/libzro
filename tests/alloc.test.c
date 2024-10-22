@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include "../zro_test.h"
-#include "../zro_alloc.h"
+#include "../libzro.h"
 
 int tests_run = 0;
 

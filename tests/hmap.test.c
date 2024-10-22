@@ -1,12 +1,4 @@
-#define __ZRO_ALLOC_IMPL__
-#define __ZRO_DYNARR_IMPL__
-#define __ZRO_HMAP_IMPL__
-
-#include <stdio.h>
-#include "../zro_dynarr.h"
-#include "../zro_hmap.h"
-#include "../zro_test.h"
-
+#include "../libzro.h"
 int tests_run = 0;
 static char * test_hmap_init() {
     //const char test[11] = "Hello";
