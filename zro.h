@@ -77,7 +77,7 @@ COMPILE-TIME OPTIONS
         } \
     }
 
-#define zro_dynarr_pop(A) zro_dynarr_header((A))->len -= 1 
+#define zro_dynarr_pop(A) zro_dynarr_header((A))->len =  zro_dynarr_header((A))->len > 0 ? zro_dynarr_header((A))->len - 1 : 0
 
 //
 // :STRUCT DECLARATIONS
